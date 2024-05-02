@@ -1,0 +1,49 @@
+
+// PIC12F675 Configuration Bit Settings
+
+// 'C' source line config statements
+
+// CONFIG
+    #pragma config FOSC = INTRCIO   // Oscillator Selection bits (INTOSC oscillator: I/O function on GP4/OSC2/CLKOUT pin, I/O function on GP5/OSC1/CLKIN)
+    #pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled)
+    #pragma config PWRTE = OFF      // Power-Up Timer Enable bit (PWRT enabled)
+    #pragma config MCLRE = OFF       // GP3/MCLR pin function select (GP3/MCLR pin function is MCLR)
+    #pragma config BOREN = OFF      // Brown-out Detect Enable bit (BOD disabled)
+    #pragma config CP = OFF         // Code Protection bit (Program Memory code protection is enabled)
+    #pragma config CPD = OFF        // Data Code Protection bit (Data memory code protection is disabled)
+
+    // #pragma config statements should precede project file includes.
+    // Use project enums instead of #define for ON and OFF.
+
+#include <xc.h>                                       
+#define _XTAL_FREQ 4000000
+#define cap GP0
+#define motor GP2
+
+void main() 
+
+{
+  
+    TRISIO0=0;
+    TRISIO2=0;
+    TRISIO2=0;
+    ANS0=0;
+    ANS2=0;
+          motor=0;    
+          cap=0;
+       for(int i=0;i<10000;i++)
+       {
+           
+             for(int j=0;j<990 ;j++);
+       }
+        cap =1;   
+        __delay_ms(500);
+        motor=1;
+        cap=1;
+        __delay_ms(4000);
+        while(1)
+           {       
+             cap =0;
+             motor=1;
+            }
+    }
